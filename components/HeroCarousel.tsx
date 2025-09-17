@@ -1,4 +1,3 @@
-// app/components/HeroCarousel.tsx
 "use client";
 
 import Image from "next/image";
@@ -22,13 +21,13 @@ const Card = ({
 
       {/* Overlay content */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6 text-white">
-        <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+        <h2 className="text-2xl md:text-6xl text-center mb-8 font-extrabold tracking-tight">
           {title}
         </h2>
         <p className="mt-2 text-sm max-w-xl">{subtitle}</p>
         {cta && (
           <div className="mt-4">
-            <button className="px-4 py-2 bg-white text-slate-900 rounded-full font-semibold shadow-sm hover:-translate-y-0.5 transition-transform">
+            <button className="px-4 py-2 text-sm bg-white text-slate-900 rounded-full font-semibold shadow-sm hover:-translate-y-0.5 transition-transform">
               {cta}
             </button>
           </div>
@@ -121,7 +120,7 @@ export default function HeroCarousel() {
       </div>
 
       {/* Controls: dots + arrows */}
-      <div className="flex justify-center items-center gap-96 mt-6">
+      <div className="flex justify-center items-center gap-26 mt-6">
         <div className="flex justify-center gap-2">
           {cards.map((_, i) => (
             <button
@@ -129,22 +128,22 @@ export default function HeroCarousel() {
               aria-label={`Go to slide ${i + 1}`}
               onClick={() => setIndex(i)}
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                i === index ? "bg-slate-800" : "bg-slate-300"
+                i === index ? "bg-slate-800 dark:bg-white" : "bg-slate-300 dark:bg-neutral-600"
               }`}
             />
           ))}
         </div>
-        <div className="flex gap-4">
+        <div className="flex relative md:left-[28rem] gap-4">
           <button
             onClick={prevSlide}
-            className="w-9 h-9 flex items-center justify-center bg-white/85 hover:bg-white text-slate-900 rounded-sm shadow-md font-bold"
+            className="w-9 h-9 flex items-center justify-center bg-white/85 hover:bg-neutral-50 text-slate-900 rounded-sm shadow-md font-bold"
             aria-label="Previous"
           >
             ‹
           </button>
           <button
             onClick={nextSlide}
-            className="w-9 h-9 flex items-center justify-center bg-white/85 hover:bg-white text-slate-900 rounded-sm shadow-md font-bold"
+            className="w-9 h-9 flex items-center justify-center bg-white/85 hover:bg-neutral-50 text-slate-900 rounded-sm shadow-md font-bold"
             aria-label="Next"
           >
             ›

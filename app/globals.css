@@ -4,3 +4,17 @@
 html {
   transition: background-color 0.3s, color 0.3s;
 }
+
+:root {
+  --page-bg: #ffffff;
+  --page-text: #181e2a;
+}
+html.dark {
+  --page-bg: #181e2a;
+  --page-text: #e6eef8;
+}
+body {
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  transition: background-color .2s, color .2s;
+}

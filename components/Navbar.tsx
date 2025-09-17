@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   Home,
   Image as ImageIcon,
@@ -12,22 +13,46 @@ import {
   Compass,
   Folder,
   ChevronDown,
+  Sun,
+  Moon,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    try {
+      const stored = localStorage.getItem("theme");
+     
+      setTheme(stored === "dark" ? "dark" : "light");
+    } catch (e) {
+      setTheme("light");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+    
+    if (next === "dark") document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  };
+
   return (
-    <nav
-      className="w-full px-8 py-4 flex items-center justify-between bg-white text-black shadow-sm"
-    >
-      
-      <div className="relative flex"> 
+    <nav className="w-full px-8 py-4 flex items-center justify-between bg-white text-black shadow-sm transition-colors duration-200">
+      <div className="relative flex">
         <div className="w-6 h-6 mt-2 mx-6 rounded bg-black flex items-center justify-center text-white font-bold text-lg">
-            K
-          </div>
+          K
+        </div>
         <button
           onClick={() => setOpen(!open)}
           className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-neutral-50 transition-colors"
@@ -43,7 +68,7 @@ export default function Navbar() {
       {/* Center Navigation */}
       <div className="hidden md:flex items-center gap-3 px-3 py-2 rounded-2xl shadow-sm bg-neutral-100">
         <button className="w-10 h-10 flex items-center justify-center rounded-xl bg-white text-white transition-colors duration-300">
-          <Home size={18} fill="white" stroke="black"/>
+          <Home size={18} fill="white" stroke="black" />
         </button>
         <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-neutral-200 transition-colors duration-300">
           <ImageIcon size={18} />
@@ -68,7 +93,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Right Side: Links */}
+      {/* Right Side */}
       <div className="flex items-center gap-3">
         <Link
           href="#"
@@ -85,8 +110,18 @@ export default function Navbar() {
           Support
         </Link>
 
-        <Bell size={18} fill="black"/>
-        
+        <Bell size={18} fill="black" />
+
+        {/* Theme Toggle Button */}
+        {mounted && (
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-200 transition"
+            aria-label="Toggle Dark Mode"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        )}
       </div>
     </nav>
   );

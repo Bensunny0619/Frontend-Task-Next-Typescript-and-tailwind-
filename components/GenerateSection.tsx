@@ -16,28 +16,28 @@ const features = [
     subtitle: "Generate images with custom styles for Fun and Instagram.",
     icon: <ImageIcon size={20} />,
     action: "Open",
-    color: "bg-blue-200",
+    color: "bg-blue-400",
   },
   {
     title: "Video",
     subtitle: "Generate videos with Motion, Flux, Runway, Lumina, and more.",
     icon: <Video size={20} />,
     action: "Open",
-    color: "bg-amber-300",
+    color: "bg-amber-400",
   },
   {
     title: "Realtime",
     subtitle: "Realtime AI rendering on a canvas. Instant feedback loops.",
     icon: <Zap size={20} />,
     action: "Open",
-    color: "bg-blue-100",
+    color: "bg-blue-800",
   },
   {
     title: "Enhancer",
     subtitle: "Upscale and enhance images and videos up to 8x.",
     icon: <Wand2 size={20} />,
     action: "Open",
-    color: "bg-neutral-700",
+    color: "bg-neutral-500",
   },
   {
     title: "Edit",
@@ -51,7 +51,7 @@ const features = [
     subtitle: "Lip-sync any video to any audio.",
     icon: <Folder size={20} />,
     action: "Open",
-    color: "bg-green-300",
+    color: "bg-green-700",
   },
   {
     title: "Motion Transfer",
@@ -65,7 +65,7 @@ const features = [
     subtitle: "Teach to replicate your style or products.",
     icon: <Compass size={20} />,
     action: "Open",
-    color: "bg-gray-300",
+    color: "bg-gray-600",
   },
 ];
 
@@ -74,7 +74,6 @@ export default function FeaturesSection() {
     <section className="max-w-7xl mx-auto px-4 md:px-6 py-12">
       <h2 className="text-xl font-semibold mb-6">Generate</h2>
 
-      {/* Force 4 columns on large screens */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((f, i) => (
           <div
@@ -94,10 +93,7 @@ export default function FeaturesSection() {
                <button className="mt-4 px-4 py-1.5 text-sm rounded-full bg-neutral-100 hover:bg-neutral-200 transition self-start">
               {f.action}
             </button>
-            </div>
-
-            {/* Bottom: aligned button */}
-           
+            </div>           
           </div>
         ))}
       </div>
