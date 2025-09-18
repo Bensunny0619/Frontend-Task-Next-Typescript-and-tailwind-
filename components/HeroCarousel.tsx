@@ -15,19 +15,21 @@ const Card = ({
   cta?: string;
 }) => {
   return (
-    <div className="relative rounded-2xl overflow-hidden w-full h-96 md:h-[22rem] shadow-md">
+    <div className="relative rounded-2xl overflow-hidden w-full h-72 sm:h-80 md:h-[22rem] shadow-md">
       {/* Background image */}
       <Image src={image} alt={title} fill className="object-cover" priority />
 
       {/* Overlay content */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6 text-white">
-        <h2 className="text-2xl md:text-6xl text-center mb-8 font-extrabold tracking-tight">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4 sm:p-6 text-white">
+        <h2 className="text-xl sm:text-3xl md:text-6xl text-center mb-4 sm:mb-8 font-extrabold tracking-tight">
           {title}
         </h2>
-        <p className="mt-2 text-sm max-w-xl">{subtitle}</p>
+        <p className="mt-1 sm:mt-2 text-xs sm:text-sm max-w-xl text-center sm:text-left">
+          {subtitle}
+        </p>
         {cta && (
-          <div className="mt-4">
-            <button className="px-4 py-2 text-sm bg-white text-slate-900 rounded-full font-semibold shadow-sm hover:-translate-y-0.5 transition-transform">
+          <div className="mt-3 sm:mt-4 flex justify-center sm:justify-start">
+            <button className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-white text-slate-900 rounded-full font-semibold shadow-sm hover:-translate-y-0.5 transition-transform">
               {cta}
             </button>
           </div>
@@ -49,11 +51,11 @@ export default function HeroCarousel() {
 
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState<1 | -1>(1); // 1 = forward, -1 = backward
+  const [direction, setDirection] = useState<1 | -1>(1);
 
   const [slideWidthPx, setSlideWidthPx] = useState<number | null>(null);
   const [gapPx, setGapPx] = useState<number>(0);
-  const gapClass = "gap-10";
+  const gapClass = "gap-6 sm:gap-10";
 
   // measure slide width
   useEffect(() => {
@@ -102,10 +104,10 @@ export default function HeroCarousel() {
 
   const transformStyle = slideWidthPx
     ? { transform: `translateX(-${index * (slideWidthPx + gapPx)}px)` }
-    : { transform: `translateX(-${index * 65}%)` };
+    : { transform: `translateX(-${index * 100}%)` };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 overflow-hidden relative">
+    <section className="max-w-7xl mx-auto px-4 md:px-6 py-6 sm:py-8 overflow-hidden relative">
       {/* Track */}
       <div
         ref={trackRef}
@@ -113,14 +115,15 @@ export default function HeroCarousel() {
         style={transformStyle}
       >
         {cards.map((card, i) => (
-          <div key={i} className="slide shrink-0 w-[65%] md:w-[50%]">
+          <div key={i} className="slide shrink-0 w-full sm:w-[75%] md:w-[50%]">
             <Card {...card} />
           </div>
         ))}
       </div>
 
       {/* Controls: dots + arrows */}
-      <div className="flex justify-center items-center gap-26 mt-6">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
+        {/* Dots */}
         <div className="flex justify-center gap-2">
           {cards.map((_, i) => (
             <button
@@ -128,12 +131,16 @@ export default function HeroCarousel() {
               aria-label={`Go to slide ${i + 1}`}
               onClick={() => setIndex(i)}
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                i === index ? "bg-slate-800 dark:bg-white" : "bg-slate-300 dark:bg-neutral-600"
+                i === index
+                  ? "bg-slate-800 dark:bg-white"
+                  : "bg-slate-300 dark:bg-neutral-600"
               }`}
             />
           ))}
         </div>
-        <div className="flex relative md:left-[28rem] gap-4">
+
+        {/* Arrows */}
+        <div className="flex gap-3 sm:gap-4">
           <button
             onClick={prevSlide}
             className="w-9 h-9 flex items-center justify-center bg-white/85 hover:bg-neutral-50 text-slate-900 rounded-sm shadow-md font-bold"
