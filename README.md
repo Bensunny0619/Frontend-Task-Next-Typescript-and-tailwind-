@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Krea AI Clone (Next.js + Tailwind CSS)
 
-## Getting Started
+This project is a **responsive AI landing page clone** built with **Next.js 13 (App Router)** and **Tailwind CSS**.  
+It includes a dark mode toggle, responsive layout, hero carousel, feature grid, and footer.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+- **Hero Carousel** – Smooth auto-sliding cards with images, titles, subtitles, and CTA buttons.  
+- **Features Section** – Responsive grid of AI feature cards with icons and descriptions.  
+- **Footer** – Clean, responsive footer with branding.  
+- **Dark Mode Support** – Implemented using `next-themes` with customizable colors.  
+- **Responsive Design** – Mobile-friendly, tablet-optimized, and desktop layouts.  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 13+** (App Router, Server Components)
+- **React 18**
+- **Tailwind CSS**
+- **next-themes** for dark mode
+- **Lucide Icons** for feature icons
+
+---
+
+## 📂 Project Structure
+
+components/
+│── Navbar.tsx
+│── HeroCarousel.tsx
+│── FeaturesSection.tsx
+│── Footer.tsx
+app/
+│── layout.tsx
+│── page.tsx
+│── providers.tsx
+public/
+│── image1.jpg ... image6.jpg
+
+
+---
+
+## ⚡ Getting Started
+
+### 1️⃣ Clone the repo
 ```bash
+git clone https://github.com/Bensunny0619/Frontend-Task-Next-Typescript-and-tailwind.git
+```
+
+###  2️⃣ Install dependencies
+npm install
+# or
+yarn install
+
+
+3️⃣ Run the dev server
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4️⃣ Open in browser
+http://localhost:3000
