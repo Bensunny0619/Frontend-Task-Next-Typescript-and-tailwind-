@@ -133,14 +133,14 @@ export default function HeroCarousel() {
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
                 i === index
                   ? "bg-slate-800 dark:bg-white"
-                  : "bg-slate-300 dark:bg-neutral-600"
+                  : "bg-slate-300 dark:bg-neutral-700"
               }`}
             />
           ))}
         </div>
 
         {/* Arrows */}
-        <div className="flex gap-3 sm:gap-4">
+        <div className="flex gap-3 sm:gap-4 relative md:left-96 lg:left-[32rem]">
           <button
             onClick={prevSlide}
             className="w-9 h-9 flex items-center justify-center bg-white/85 hover:bg-neutral-50 text-slate-900 rounded-sm shadow-md font-bold"
